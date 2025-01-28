@@ -30,8 +30,8 @@ app.use('/api/v1/image', cldRouter);
 app.use('/api/v1/tasks', taskRouter);
 
 app.get('/', (req, res) => {
-  res.status(200).json({ message: 'Welcome to ProdActiveDay API'})
-})
+  res.status(200).json({ message: 'Welcome to ProdActiveDay API' });
+});
 
 app.use('*', (req, res) => {
   res.status(404).json({ message: 'not found' });
