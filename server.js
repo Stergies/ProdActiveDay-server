@@ -26,6 +26,8 @@ app.use(
   })
 );
 
+app.options('*', cors());  // Handle preflight requests
+
 app.use((req, res, next) => {
   console.log("Request Headers:", req.headers);
   console.log("Response Headers:", res.getHeaders());
