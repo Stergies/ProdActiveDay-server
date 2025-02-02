@@ -19,10 +19,17 @@ app.use(cookieParser());
 app.use(fileUpload());
 app.use(
   cors({
-    origin: process.env.CLIENT_URL,
-    credentials: true,
+    origin: process.env.CLIENT_URL, // Make sure the client URL is correctly set in .env
+    methods: ['GET', 'POST', 'PUT', 'DELETE'], // Allow all necessary methods
+    credentials: true, // Enable credentials for cookie-based authentication
+    allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With'], // Allow all necessary headers
   })
 );
+
+app.use((req, res, next) => {
+  console.log("CORS headers:", res.getHeaders());
+  next();
+});
 
 app.use('/api/v1/users', userRouter);
 app.use('/api/v1/auth', authRouter);
