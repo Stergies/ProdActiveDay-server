@@ -27,7 +27,8 @@ app.use(
 );
 
 app.use((req, res, next) => {
-  console.log("CORS headers:", res.getHeaders());
+  console.log("Request Headers:", req.headers);
+  console.log("Response Headers:", res.getHeaders());
   next();
 });
 
